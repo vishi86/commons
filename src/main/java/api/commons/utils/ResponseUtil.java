@@ -1,8 +1,10 @@
 package api.commons.utils;
 
+import java.util.Date;
+
 public class ResponseUtil {
 
-    public static SuccessResponse getHttpStatusResponse(String message, int statusCode, Object res) {
-        return new SuccessResponse(res, statusCode, message);
+    public static ResponseMessage getHttpResponseMessage(String message, int statusCode, Object res, String path) {
+        return new ResponseMessage(statusCode, message, path, res, new Date());
     }
 }
