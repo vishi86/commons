@@ -15,7 +15,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> tokenValidationException(TokenValidationException exception) {
         log.info("Exception {}", exception.getMessage());
         return new ResponseEntity<>(exception.getResponseMessage(), HttpStatus.FORBIDDEN);
-    }
+    } 
 
     @ExceptionHandler(UserAuthenticationException.class)
     public ResponseEntity<Object> userAuthenticationException(UserAuthenticationException exception) {
