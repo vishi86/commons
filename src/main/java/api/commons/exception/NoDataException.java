@@ -11,8 +11,7 @@ public class NoDataException extends RuntimeException {
 
     private final ResponseMessage responseMessage;
 
-    public NoDataException(Exception ex, ResponseMessage message) {
-        super(ex);
+    public NoDataException(ResponseMessage message) {
         this.responseMessage = message;
     }
 }
