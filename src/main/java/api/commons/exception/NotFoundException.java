@@ -11,8 +11,7 @@ public class NotFoundException extends RuntimeException {
 
     private final ResponseMessage responseMessage;
 
-    public NotFoundException(Exception ex, ResponseMessage message) {
-        super(ex);
+    public NotFoundException(ResponseMessage message) {
         this.responseMessage = message;
     }
 }
