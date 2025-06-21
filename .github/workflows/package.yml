@@ -16,6 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
+      - name: Set Up JDK
+        uses: actions/setup-java@v4.7.0
+        with:
+          java-version: '17'
+          distribution: 'oracle'
+          cache: maven
+
       - name: Maven Settings
         run: |
           mkdir -p $HOME/.m2
@@ -35,15 +42,6 @@ jobs:
           path: ~/.m2/repository
           key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
           restore-keys: ${{runner.os}}-maven-
-      
-      - name: Set Up JDK
-        uses: actions/setup-java@v4.7.0
-        with:
-          java-version: '17'
-          distribution: 'oracle'
-          server-id: 'github'
-          server-username: ${{github.actor}}
-          server-password: ${{secrets.GITHUB_TOKEN}}
 
       - name: Publish with Maven
         run: mvn deploy -Drevision=${{inputs.revision}}
